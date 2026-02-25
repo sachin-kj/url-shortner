@@ -12,7 +12,12 @@ await url.create({
  redirecturl:body.url,
  visithistory:[]
 })
-    return res.json({id:shortID})
+
+    const allUrls = await url.find({});
+      return res.render('home', {
+        id: shortID,
+        urls: allUrls   // 🔥 SEND THIS
+    });
 }
 async function handleGetAnalytics(req,res){
     const shortid=req.params.shortid
